@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Money Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 { text-align: center; }
+    input, select, button {
+      padding: 10px;
+      margin: 6px 0;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover { background-color: #2980b9; }
+    .entry {
+      background: #fff;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .entry button {
+      margin-left: 8px;
+      padding: 5px 10px;
+    }
+    #totals {
+      background: #e1f5e1;
+      padding: 10px;
+      border-left: 4px solid #2ecc71;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Borrowed & Lent Money Tracker</h1>
+
+  <input type="text" id="person" placeholder="Name" />
+  <input type="number" id="amount" placeholder="Amount" />
+  <select id="type">
+    <option value="lent">Lent</option>
+    <option value="borrowed">Borrowed</option>
+  </select>
+  <button id="submitBtn" onclick="addEntry()">Add</button>
+
+  <input type="text" id="search" placeholder="Search by name..." oninput="displayEntries()" />
+
+  <label for="filter">Filter:</label>
+  <select id="filter" onchange="displayEntries()">
+    <option value="all">All</option>
+    <option value="lent">Lent</option>
+    <option value="borrowed">Borrowed</option>
+  </select>
+
+  <button onclick="exportData()">Export Data</button>
+  <input type="file" id="importFile" accept=".json" onchange="importData()" />
+
+  <div id="totals"></div>
+  <div id="entries"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
